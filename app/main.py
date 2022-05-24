@@ -1,8 +1,8 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-
-app = FastAPI()
-# app.include_router(gares.router)
+from app.api_v1.endpoints import todo
+api = FastAPI()
+api.include_router(todo.router)
 
 
 origins = [
@@ -11,7 +11,7 @@ origins = [
     "http://192.168.1.40:3000"
 ]
 
-app.add_middleware(
+api.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
     allow_credentials=True,
@@ -20,6 +20,6 @@ app.add_middleware(
 )
 
 
-@app.get("/")
+@api.get("/")
 async def root():
     return {"status": "OK"}
