@@ -9,3 +9,6 @@ class CreatedTask(BaseModel):
     tag: str
 
 
+class DeletedTask(BaseModel):
+    title: str
+
