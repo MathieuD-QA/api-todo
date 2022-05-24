@@ -12,3 +12,9 @@ async def created_task(payload: todo_schemas.CreatedTask):
          "tag": payload.tag})
     return create
 
+
+
+@router.delete("/api/deleted_task", status_code=status.HTTP_200_OK)
+async def deleted_task(payload: todo_schemas.DeletedTask):
+    delete = await database.delete_task({"title":payload.title})
+    return delete
