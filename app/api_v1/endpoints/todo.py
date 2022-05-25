@@ -18,3 +18,15 @@ async def created_task(payload: todo_schemas.CreatedTask):
 async def deleted_task(payload: todo_schemas.DeletedTask):
     delete = await database.delete_task({"title":payload.title})
     return delete
+
+
+@router.get("/api/get_all", status_code=status.HTTP_200_OK)
+async def get_all():
+     show = await database.get_show()
+     return show
+
+
+#@router.patch("/api/edit_task", status_code=status.HTTP_200_OK)
+#async def edit_task():
+#    edit = await database.edit_id()
+#    return edit
